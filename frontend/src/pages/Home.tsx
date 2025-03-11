@@ -1,11 +1,16 @@
+import BentoGrid from "../components/BentoGrid";
+import CTA from "../components/CTA";
+import HeaderStats from "../components/HeaderStats";
+import Content from "../components/Content";
 
 function Home() {
 
   return (
     <>
-        <h1 className="text-3xl font-bold underline text-center pt-3">
-            Home    
-        </h1>
+        <CTA />
+        <BentoGrid />
+        <HeaderStats />
+        <Content />
     </>
   )
 }
