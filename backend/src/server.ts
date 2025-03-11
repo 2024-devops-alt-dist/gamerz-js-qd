@@ -1,14 +1,14 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import {client, run} from "./data/db";
+import app from "./app";
+
 
 // configures dotenv to work in your application
 dotenv.config();
 
 // Connexion for MongoDB
 run();
-
-const app = express();
 
 const PORT = process.env.PORT;
 
