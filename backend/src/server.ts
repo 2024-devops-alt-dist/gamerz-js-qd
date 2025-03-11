@@ -1,8 +1,13 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import {client, run} from "./data/db";
 
 // configures dotenv to work in your application
 dotenv.config();
+
+// Connexion for MongoDB
+run();
+
 const app = express();
 
 const PORT = process.env.PORT;
@@ -16,4 +21,11 @@ app.listen(PORT, () => {
 }).on("error", (error) => {
   // gracefully handle error
   throw new Error(error.message);
+});
+
+// Lors de l'arrêt du serveur, assurez-vous de fermer la connexion MongoDB
+process.on('SIGINT', async () => {
+  console.log('Closing MongoDB connection...');
+  await client.close();
+  process.exit(0); // Fermez proprement le processus
 });
