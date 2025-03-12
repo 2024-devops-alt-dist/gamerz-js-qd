@@ -12,14 +12,23 @@ async function connectDB() {
     if (!uri) {
       throw new Error('MONGODB_URI is not defined in the environment variables');
     }
-    // Connect the client to the server	(optional starting in v4.7)
+    // Connect to MongoDB
     await mongoose.connect(uri,);
-    // Send a ping to confirm a successful connection
-    /* const adminDB = mongoose.Connection.prototype.db;
-    if(!adminDB){
-      throw new Error('No adminDB');
-    }
-    await adminDB.command({ ping: 1 }); */
+
+    mongoose.connection.once('open', async () => {
+      try {
+        // Ping de la base de données
+        const db = mongoose.connection.db
+          if (!db) {
+            throw new Error('Database connection is not established');
+          }
+        await db.command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        
+      } catch (error) {
+        console.error('Error with MongoDB ping:', error);
+      }
+    });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } catch (error) { 
     console.error('Error connecting to MongoDB:', error);
