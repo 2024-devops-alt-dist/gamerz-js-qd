@@ -13,7 +13,7 @@ dotenv.config();
 connectDB();
 
 // Insertion des données utilisateur 
-//seedUsers();
+//seedUsers(); // à décommenter quand on veut remettre les faux utilisateurs de base dans la BDD
 
 const PORT = process.env.PORT;
 

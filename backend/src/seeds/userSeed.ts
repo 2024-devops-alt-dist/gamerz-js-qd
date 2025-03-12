@@ -137,7 +137,7 @@ const seedUsers = async () => {
         await userModel.insertMany(usersPasswordHashed);
         console.log("✅ 10 utilisateurs ajoutés avec succès !");
         
-        process.exit(); // Fermer le script après exécution
+        process.exit(); // Fermer le script après exécution TODO : ça empêche Express de tourner après l'execution du script !
     } catch (error) {
         console.error("❌ Erreur d'insertion :", error);
         process.exit(1);
