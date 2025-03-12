@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router";
-import SignIn from "./pages/SignIn";
+import LogIn from "./pages/Login";
 import Home from "./pages/Home";
-
+import Register from "./pages/Register";
 import './App.css'
+
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route index element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   )

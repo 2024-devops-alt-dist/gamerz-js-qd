@@ -1,5 +1,29 @@
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+//import { useState } from "react";
+import * as z from "zod";
+
+// Définition du schéma de validation avec Zod
+const formSchemaSignIn = z.object({
+  email: z.string().email("Invalid email address."),
+  password: z.string().min(8, "the password must be at least 8 characters long."),
+});
+
+// Définition du type TypeScript basé sur le schéma Zod
+type FormData = z.infer<typeof formSchemaSignIn>;
 
 export default function Form() {
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    resolver: zodResolver(formSchemaSignIn),
+  });
+
+  //const [submittedData, setSubmittedData] = useState<FormData | null>(null);
+
+  const onSubmit = (data: FormData) => {
+    //setSubmittedData(data);
+    console.log("Submitted form", data);
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -15,7 +39,7 @@ export default function Form() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address
@@ -23,12 +47,12 @@ export default function Form() {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
                   type="email"
-                  required
+                  {...register("email")}
                   autoComplete="email"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
               </div>
             </div>
 
@@ -46,12 +70,13 @@ export default function Form() {
               <div className="mt-2">
                 <input
                   id="password"
-                  name="password"
+                  {...register("password")}
                   type="password"
                   required
                   autoComplete="current-password"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}
               </div>
             </div>
 
