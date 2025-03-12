@@ -3,14 +3,12 @@ import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
 import bcrypt from "bcrypt";
 
-
 // Créer un utilisateur
 export const insertUser = async (req: Request<{}, {}, IUser>, res: Response) => {
     try {
-        // Hasher les mots de passe avant insertion
-        const newUser = req.body;
-        await bcrypt.hash(newUser.password, 10) //TODO : tester si ça fonctionne biencd
-        await userModel.create(req.body);
+        let oneUser = req.body
+        oneUser.password = await bcrypt.hash(oneUser.password, 10)
+        const newUser = await userModel.create(oneUser);
         res.status(201).json(newUser);
     } catch (error) {
         res.status(500).json({ message: 'Error creating user', error });

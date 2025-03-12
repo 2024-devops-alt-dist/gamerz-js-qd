@@ -13,7 +13,7 @@ dotenv.config();
 connectDB();
 
 // Insertion des données utilisateur 
-seedUsers();
+//seedUsers();
 
 const PORT = process.env.PORT;
 
