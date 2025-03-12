@@ -112,8 +112,8 @@ const seedUsers = async () => {
         await connectDB(); // Connexion à MongoDB
 
         // // Supprimer tous les utilisateurs existants
-        // await userModel.deleteMany();
-        // console.log("🔥 Anciennes données supprimées");
+        await userModel.deleteMany();
+        console.log("🔥 Anciennes données supprimées");
 
         // Hasher les mots de passe avant insertion
         const usersPasswordHashed = await Promise.all(
