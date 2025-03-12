@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { IUser } from '../interfaces/userInterface';
 
+
 const { Schema } = mongoose;
 
 const userSchema = new Schema<IUser>({
@@ -23,7 +24,7 @@ const userSchema = new Schema<IUser>({
     },
     role: {
         type: [String],
-        default: []   
+        default: []
     },
     allowNotification: {
         type: Boolean,
@@ -36,16 +37,10 @@ const userSchema = new Schema<IUser>({
     status: {
         type: [String],
         default: []
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
     }
-}
+}, { 
+    timestamps: true
+    } 
 );
 
 export default userSchema;

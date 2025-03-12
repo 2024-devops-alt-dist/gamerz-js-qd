@@ -1,14 +1,18 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
-import {client, run} from "./data/db";
+import {client, connectDB} from "./data/db";
 import app from "./app";
+import seedUsers from "./seeds/userSeed";
 
 
 // configures dotenv to work in your application
 dotenv.config();
 
 // Connexion for MongoDB
-run();
+connectDB();
+
+// Insertion des données utilisateur 
+seedUsers();
 
 const PORT = process.env.PORT;
 

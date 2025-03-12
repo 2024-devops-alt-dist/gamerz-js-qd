@@ -19,7 +19,7 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+async function connectDB() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
@@ -30,6 +30,6 @@ async function run() {
     console.error('Error connecting to MongoDB:', error);
   }
 }
-run().catch(console.dir);
+connectDB().catch(console.dir);
 
-export { client, run };
+export { client, connectDB };
