@@ -10,6 +10,7 @@ const users = [
         password: "password1",
         admissionText: "Je suis une administratrice",
         role: ["admin"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: true,
         seenAdmission: false,
         status: ["active"]
@@ -20,6 +21,7 @@ const users = [
         password: "password2",
         admissionText: "Je suis un administrateur",
         role: ["admin"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: true,
         seenAdmission: true,
         status: ["inactive"]
@@ -30,6 +32,7 @@ const users = [
         password: "password3",
         admissionText: "Je suis un utilisateur",
         role: ["user"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: false,
         seenAdmission: false,
         status: ["active"]
@@ -40,6 +43,7 @@ const users = [
         password: "password4",
         admissionText: "Je suis un utilisateur",
         role: ["user"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: true,
         seenAdmission: true,
         status: ["active"]
@@ -50,6 +54,7 @@ const users = [
         password: "password5",
         admissionText: "Je suis un utilisateur",
         role: ["user"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: false,
         seenAdmission: false,
         status: ["inactive"]
@@ -60,6 +65,7 @@ const users = [
         password: "password6",
         admissionText: "Je suis un utilisateur",
         role: ["user"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: true,
         seenAdmission: true,
         status: ["active"]
@@ -70,6 +76,7 @@ const users = [
         password: "password7",
         admissionText: "Je suis un utilisateur",
         role: ["user"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: false,
         seenAdmission: false,
         status: ["active"]
@@ -80,6 +87,7 @@ const users = [
         password: "password8",
         admissionText: "Je suis un joueur",
         role: ["gamer"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: true,
         seenAdmission: false,
         status: ["inactive"]
@@ -90,6 +98,7 @@ const users = [
         password: "password9",
         admissionText: "Je suis un joueur",
         role: ["gamer"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: true,
         seenAdmission: true,
         status: ["active"]
@@ -100,6 +109,7 @@ const users = [
         password: "password10",
         admissionText: "Je suis un joueur",
         role: ["gamer"],
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541",
         allowNotification: false,
         seenAdmission: false,
         status: ["active"]

@@ -26,6 +26,10 @@ const userSchema = new Schema<IUser>({
         type: [String],
         default: []
     },
+    avatar: {
+        type: String,
+        default: "NO_IMAGE" 
+    },
     allowNotification: {
         type: Boolean,
         default: true
