@@ -1,14 +1,19 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
-import {client, run} from "./data/db";
+import { connectDB} from "./data/db";
 import app from "./app";
+import seedUsers from "./seeds/userSeed";
+import mongoose from "mongoose";
 
 
 // configures dotenv to work in your application
 dotenv.config();
 
 // Connexion for MongoDB
-run();
+connectDB();
+
+// Insertion des données utilisateur 
+seedUsers();
 
 const PORT = process.env.PORT;
 
@@ -26,6 +31,6 @@ app.listen(PORT, () => {
 // Lors de l'arrêt du serveur, assurez-vous de fermer la connexion MongoDB
 process.on('SIGINT', async () => {
   console.log('Closing MongoDB connection...');
-  await client.close();
+  await mongoose.disconnect();
   process.exit(0); // Fermez proprement le processus
 });
