@@ -12,7 +12,8 @@ const userSchema = new Schema<IUser>({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true,
     },
     password: {
         type: String,
@@ -25,6 +26,10 @@ const userSchema = new Schema<IUser>({
     role: {
         type: [String],
         default: []
+    },
+    avatar: {
+        type: String,
+        default: "NO_IMAGE" 
     },
     allowNotification: {
         type: Boolean,

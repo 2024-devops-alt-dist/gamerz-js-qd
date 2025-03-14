@@ -1,11 +1,17 @@
 import { Request, Response } from "express";
 import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
+import bcrypt from "bcrypt";
 
 // Créer un utilisateur
-export const insertUser = async (req: Request<{}, {}, IUser>, res: Response) => {
+export const register = async (req: Request<{}, {}, IUser>, res: Response) => {
+    const today = new Date();
     try {
-        const newUser = await userModel.create(req.body);
+        let oneUser = req.body
+        oneUser.password = await bcrypt.hash(oneUser.password, 10)
+        oneUser.createdAt = today;
+        oneUser.updatedAt = today;
+        const newUser = await userModel.create(oneUser);
         res.status(201).json(newUser);
     } catch (error) {
         res.status(500).json({ message: 'Error creating user', error });

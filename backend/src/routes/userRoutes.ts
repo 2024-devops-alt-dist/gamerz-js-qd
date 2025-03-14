@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import { IUser } from "../interfaces/userInterface";
 import {
-    insertUser,
+    register,
     getUsers,
     getUserById,
     updateUser,
@@ -11,7 +11,7 @@ import {
 const router = Router();
 
 // Définition des routes utilisateur
-router.post("/", insertUser);
+router.post("/register", register);
 router.get("/", getUsers);
 router.get("/:id", getUserById);
 router.put("/:id", updateUser);

@@ -3,7 +3,8 @@ export interface IUser extends Document{
     email: string;  
     password: string;  
     admissionText?: string; 
-    role?: string[];  
+    role?: string[]; 
+    avatar?: string; 
     allowNotification?: boolean;  
     seenAdmission?: boolean;  
     status?: string[];  
