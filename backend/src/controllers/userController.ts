@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken';
 
 
 // Créer un utilisateur
