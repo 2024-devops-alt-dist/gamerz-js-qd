@@ -8,3 +8,10 @@ export async function postUser(user: FormData) {
     return response.data;
 }
 
+//Pour connecter un utilisateur
+//@returns User
+export async function loginUser(user: {email: string, password: string}) {
+    const response = await axiosClient.post<User>('/users/login', user);
+    return response.data;
+}
+

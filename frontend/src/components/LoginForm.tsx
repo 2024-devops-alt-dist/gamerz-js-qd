@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 //import { useState } from "react";
 import * as z from "zod";
+import { loginUser } from '../services/userService';
 
 // Définition du schéma de validation avec Zod
 const formSchemaSignIn = z.object({
@@ -19,8 +20,17 @@ export default function Form() {
 
   //const [submittedData, setSubmittedData] = useState<FormData | null>(null);
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     //setSubmittedData(data);
+    
+    // Appel vers l'API
+    try {
+      await loginUser(data);
+      console.log("User logged in successfully");
+    }
+    catch (error) {
+      console.error("Error during login", error);
+    }
     console.log("Submitted form", data);
   };
 
