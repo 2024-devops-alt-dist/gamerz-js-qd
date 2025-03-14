@@ -33,6 +33,30 @@ export const register = async (req: Request<{}, {}, IUser>, res: Response) => {
     }
 };
 
+// Login 
+export const login = async (req: Request<{}, {}, IUser>, res: Response) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await userModel.findOne({ email });
+        if (!user) { 
+            res.status(404).json({ message: 'User not found' });
+            return;
+        }
+        const passwordValid = await bcrypt.compare(password, user.password);
+        if (!passwordValid) {
+            res.status(401).json({ message: 'Incorrect password' });
+            return;
+        }
+        res.status(200).json(user);
+        console.log(user);
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Error logging in', error });
+    }
+};
+
+
 // Récupérer tous les utilisateurs
 export const getUsers = async (_req: Request, res: Response) => {
     try {
