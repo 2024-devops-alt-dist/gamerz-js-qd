@@ -3,6 +3,7 @@ import LogIn from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import './App.css'
+import './auth/axios-config'
 
 
 function App() {

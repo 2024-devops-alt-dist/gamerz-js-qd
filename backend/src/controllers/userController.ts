@@ -3,14 +3,29 @@ import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
 import bcrypt from "bcrypt";
 
+
 // Créer un utilisateur
 export const register = async (req: Request<{}, {}, IUser>, res: Response) => {
     const today = new Date();
+    console.log(req.headers)
+    console.log("Données :", req.body);
+    console.log(req.file);
+
+    let avatarPath = "";
+    if (req.file && req.file.filename) {
+        avatarPath = `/uploads/${req.file.filename}`;
+    }
+    
     try {
         let oneUser = req.body
         oneUser.password = await bcrypt.hash(oneUser.password, 10)
         oneUser.createdAt = today;
         oneUser.updatedAt = today;
+        if (avatarPath) {
+            oneUser.avatar = { path: avatarPath }; 
+        }
+        oneUser.role = ["user"];
+
         const newUser = await userModel.create(oneUser);
         res.status(201).json(newUser);
     } catch (error) {

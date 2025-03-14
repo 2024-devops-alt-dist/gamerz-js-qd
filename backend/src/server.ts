@@ -6,6 +6,7 @@ import seedUsers from "./seeds/userSeed";
 import mongoose from "mongoose";
 
 
+
 // configures dotenv to work in your application
 dotenv.config();
 

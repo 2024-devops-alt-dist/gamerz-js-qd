@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { postUser } from '../services/userService';
 
 // Définition du schéma de validation avec Zod
 const formSchemaSignUp = z.object({
@@ -8,7 +9,7 @@ const formSchemaSignUp = z.object({
     email: z.string().email("Invalid email address"),
     password: z.string().min(8, "The password must be at least 8 characters long"),
     confirmPassword: z.string().min(8, "The password confirmation must be at least 8 characters long"),
-    avatar: z.instanceof(File).optional(),
+    avatar: z.instanceof(FileList).transform((fileList) => fileList[0]).optional(),
     admissionText: z.string().min(100, "The admission text must be at least 100 characters long"),
 }).refine((data) => data.password === data.confirmPassword, {
     message: "The passwords do not match",
@@ -23,9 +24,26 @@ export default function RegisterForm() {
         resolver: zodResolver(formSchemaSignUp),
     });
 
-    const onSubmit = (data: FormData) => {
+    const onSubmit = async (data: FormData) => {
         console.log("Form submitted", data);
-        // Vous pouvez gérer l'envoi du formulaire ici, par exemple envoyer les données vers une API
+        const formData = new FormData();
+
+        formData.append("name", data.name);
+        formData.append("email", data.email);
+        formData.append("password", data.password);
+        formData.append("admissionText", data.admissionText);
+
+        if (data.avatar) {
+            formData.append("avatar", data.avatar); 
+        }
+
+        // Appel vers l'API
+        try {
+            await postUser(formData);
+        }
+        catch (error) {
+            console.error("Error during user creation", error);
+        }
     };
 
     return (
