@@ -3,6 +3,7 @@ import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import { SECRET_KEY } from './authController';
 
 
 // Créer un utilisateur
@@ -49,7 +50,11 @@ export const login = async (req: Request<{}, {}, IUser>, res: Response) => {
             res.status(401).json({ message: 'Incorrect password' });
             return;
         }
-        res.status(200).json(user);
+        // JWT token dans le cas où tout va bien
+        const accessToken = jwt.sign(user, SECRET_KEY)
+        const role = user.role;
+        res.cookie(accessToken, {httpOnly:true});
+        res.status(200).json({msg: "utilisateur connecté", email, role});
         console.log(user);
     }
     catch (error) {
