@@ -66,7 +66,7 @@ export const login = async (req: Request<{}, {}, IUser>, res: Response) => {
             httpOnly:true,
             secure: true, // Https uniquement en prod
             sameSite: 'lax', // niveau de sécurité pour les cookies
-            maxAge: 1000 * 60 * 60 * 24, // 1 jour (durée de vie du cookiedans le navigateur)
+            maxAge: 1000 * 60 * 60 * 24, // 1 jour (durée de vie du cookie dans le navigateur)
         });
 
         res.cookie('refreshToken', refreshToken, {

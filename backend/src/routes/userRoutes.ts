@@ -10,6 +10,7 @@ import {
 } from "../controllers/userController";
 import multer from "multer";
 import  path  from "path";
+import { verifyAccessToken, refreshAccessToken } from "../middlewares/authMiddlewares";
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -26,11 +27,12 @@ const router = Router();
 
 // Définition des routes utilisateur
 
-router.get("/", getUsers);
+router.get("/", verifyAccessToken, getUsers);
 router.post("/register", upload.single("avatar"), register);
 router.post("/login", login);
-router.get("/:id", getUserById);
-router.put("/:id", updateUser);
-router.delete("/:id", deleteUser);
+router.post("/refresh-token", refreshAccessToken);
+router.get("/:id", verifyAccessToken, getUserById);
+router.put("/:id", verifyAccessToken, updateUser);
+router.delete("/:id", verifyAccessToken, deleteUser);
 
 export default router;
