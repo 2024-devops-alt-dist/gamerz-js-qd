@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { SECRET_KEY, REFRESH_SECRET_KEY } from '../controllers/authController';
+import { SECRET_KEY, REFRESH_SECRET_KEY } from '../config';
 import userModel from '../models/userModel';
 
 // Middleware pour vérifier l'access token
