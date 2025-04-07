@@ -3,7 +3,7 @@ import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY } from './authController';
+import { SECRET_KEY, REFRESH_SECRET_KEY } from './authController';
 
 
 // Créer un utilisateur
@@ -60,15 +60,24 @@ export const login = async (req: Request<{}, {}, IUser>, res: Response) => {
 
         // JWT token dans le cas où tout va bien
         const accessToken = jwt.sign(payload, SECRET_KEY, { expiresIn: '1d' }) // durée de validité du token 
-        const role = user.role;
+        const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, { expiresIn: '30d' });
+    
         res.cookie('accessToken', accessToken, {
             httpOnly:true,
             secure: true, // Https uniquement en prod
             sameSite: 'lax', // niveau de sécurité pour les cookies
             maxAge: 1000 * 60 * 60 * 24, // 1 jour (durée de vie du cookiedans le navigateur)
         });
-        res.status(200).json({msg: "utilisateur connecté", email, role});
-        console.log(user);
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'lax',
+            maxAge: 1000 * 60 * 60 * 24 * 30, 
+        });
+
+        res.status(200).json({msg: "utilisateur connecté", payload});
+        console.log("Utilisateur connecté :", payload);
     }
     catch (error) {
         res.status(500).json({ message: 'Error logging in', error });
