@@ -7,6 +7,7 @@ import {
     getUserById,
     updateUser,
     deleteUser,
+    logout,
 } from "../controllers/userController";
 import multer from "multer";
 import  path  from "path";
@@ -31,6 +32,7 @@ router.get("/", verifyAccessToken, getUsers);
 router.post("/register", upload.single("avatar"), register);
 router.post("/login", login);
 router.post("/refresh-token", refreshAccessToken);
+router.post("/logout", logout);
 router.get("/:id", verifyAccessToken, getUserById);
 router.put("/:id", verifyAccessToken, updateUser);
 router.delete("/:id", verifyAccessToken, deleteUser);

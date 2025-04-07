@@ -84,6 +84,16 @@ export const login = async (req: Request<{}, {}, IUser>, res: Response) => {
     }
 };
 
+// Logout
+export const logout = (req: Request, res: Response): void => {
+    // Supprimer les cookies contenant les tokens
+    res.clearCookie("accessToken", { httpOnly: true, secure: true, sameSite: "lax" });
+    res.clearCookie("refreshToken", { httpOnly: true, secure: true, sameSite: "lax" });
+
+    // Répondre avec un message de succès
+    res.status(200).json({ message: "Successfully logged out" });
+};
+
 
 // Récupérer tous les utilisateurs
 export const getUsers = async (_req: Request, res: Response) => {
