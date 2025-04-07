@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { SECRET_KEY, REFRESH_SECRET_KEY } from '../controllers/authController';
 import userModel from '../models/userModel';
-import { IUser } from '../interfaces/userInterface';
 
 // Middleware pour vérifier l'access token
 export const verifyAccessToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -24,7 +23,8 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
             return;
         }
 
-        req.user = user; // Ajoute l'utilisateur décodé à la requête
+        // CA FAIT BUGUER
+        //req.user = user; // Ajoute l'utilisateur décodé à la requête
         next();
     } catch (error) {
         res.status(403).json({ message: 'Invalid or expired access token' });
