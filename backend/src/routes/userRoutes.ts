@@ -6,6 +6,7 @@ import {
     getUserById,
     updateUser,
     deleteUser,
+    getMe,
 } from "../controllers/userController";
 import multer from "multer";
 import  path  from "path";
@@ -31,5 +32,6 @@ router.post("/register", upload.single("avatar"), register);
 router.get("/:id", verifyAccessToken, getUserById);
 router.put("/:id", verifyAccessToken, updateUser);
 router.delete("/:id", verifyAccessToken, deleteUser);
+router.get('/me', verifyAccessToken, getMe);
 
 export default router;

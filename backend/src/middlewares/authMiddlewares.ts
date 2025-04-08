@@ -24,7 +24,8 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
         }
 
         // CA FAIT BUGUER
-        //req.user = user; // Ajoute l'utilisateur décodé à la requête
+        // req.user = user; // Ajoute l'utilisateur décodé à la requête
+        // req.userId = decoded.id;
         next();
     } catch (error) {
         res.status(403).json({ message: 'Invalid or expired access token' });

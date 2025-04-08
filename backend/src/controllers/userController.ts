@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { IUser } from '../interfaces/userInterface';
 import userModel from '../models/userModel';
 import bcrypt from "bcrypt";
-
+import jwt from 'jsonwebtoken';
+import { SECRET_KEY, REFRESH_SECRET_KEY } from '../config';
 
 // Créer un utilisateur
 export const register = async (req: Request<{}, {}, IUser>, res: Response) => {
@@ -98,5 +99,43 @@ export const deleteUser = async (
         res.status(200).json({ message: 'User deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error deleting user' });
+    }
+};
+
+// Fonction pour renvoyer les informations de l'utilisateur connecté
+export const getMe = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+
+        const token = req.cookies.token;
+        if (!token) {
+            res.status(403).json({ message: 'No token, access forbidden' });
+            return;
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY) as jwt.JwtPayload;
+        
+        const user = await userModel.findById(decoded._id); // Utilise l'ID de l'utilisateur extrait du token
+
+        if (!user) {
+            res.status(404).json({ message: 'User not found' });
+            return;
+        }
+
+        // Renvoie les informations essentielles de l'utilisateur
+        res.status(200).json({
+            _id: user._id,
+            username: user.name,
+            email: user.email,
+            role: user.role,
+            admissionText: user.admissionText,
+            avatar: user.avatar,
+            allowNotification: user.allowNotification,
+            seenAdmission: user.seenAdmission,
+            status: user.status,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
     }
 };
