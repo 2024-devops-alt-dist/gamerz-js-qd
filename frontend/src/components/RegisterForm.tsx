@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { postUser } from '../services/userService';
+import { useNavigate } from 'react-router';
 
 // Définition du schéma de validation avec Zod
 const formSchemaSignUp = z.object({
@@ -24,6 +25,8 @@ export default function RegisterForm() {
         resolver: zodResolver(formSchemaSignUp),
     });
 
+    const navigate = useNavigate();
+    
     const onSubmit = async (data: FormData) => {
         console.log("Form submitted", data);
         const formData = new FormData();
@@ -40,6 +43,7 @@ export default function RegisterForm() {
         // Appel vers l'API
         try {
             await postUser(formData);
+            navigate("/login"); // Redirection vers la page de connexion après l'inscription
         }
         catch (error) {
             console.error("Error during user creation", error);

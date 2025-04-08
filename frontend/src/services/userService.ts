@@ -11,7 +11,7 @@ export async function postUser(user: FormData) {
 //Pour connecter un utilisateur
 //@returns User
 export async function loginUser(user: {email: string, password: string}) {
-    const response = await axiosClient.post<User>('/users/login', user);
+    const response = await axiosClient.post<User>('/auth/login', user);
     return response.data;
 }
 

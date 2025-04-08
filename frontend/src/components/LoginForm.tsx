@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 //import { useState } from "react";
 import * as z from "zod";
 import { loginUser } from '../services/userService';
+import { useNavigate } from 'react-router';
 
 // Définition du schéma de validation avec Zod
 const formSchemaSignIn = z.object({
@@ -20,6 +21,8 @@ export default function Form() {
 
   //const [submittedData, setSubmittedData] = useState<FormData | null>(null);
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data: FormData) => {
     //setSubmittedData(data);
     
@@ -27,6 +30,7 @@ export default function Form() {
     try {
       await loginUser(data);
       console.log("User logged in successfully");
+      navigate("/"); // Redirection vers la page d'accueil après la connexion
     }
     catch (error) {
       console.error("Error during login", error);
