@@ -1,5 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { logoutUser } from '../services/userService'
+import { useNavigate } from 'react-router'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -13,6 +15,18 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+
+  const navigate = useNavigate();
+
+const handleLogout = async () => {
+  try {
+    await logoutUser();
+    navigate('/login'); // Redirect to login page after logout
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -98,6 +112,10 @@ export default function NavBar() {
                 <MenuItem>
                   <a
                     href="#"
+                    onClick={(e) => {
+                      e.preventDefault(); // évite que le lien ne recharge la page
+                      handleLogout();
+                    }}
                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                   >
                     Sign out

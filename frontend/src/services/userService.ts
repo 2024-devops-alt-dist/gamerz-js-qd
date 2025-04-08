@@ -15,3 +15,6 @@ export async function loginUser(user: {email: string, password: string}) {
     return response.data;
 }
 
+export async function logoutUser() {
+    await axiosClient.post('/auth/logout');
+  }
