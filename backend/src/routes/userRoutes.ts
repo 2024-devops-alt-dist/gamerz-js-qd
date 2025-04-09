@@ -32,6 +32,7 @@ router.post("/register", upload.single("avatar"), register);
 router.get("/:id", verifyAccessToken, getUserById);
 router.put("/:id", verifyAccessToken, updateUser);
 router.delete("/:id", verifyAccessToken, deleteUser);
-router.get('/me', verifyAccessToken, getMe);
+router.get('/me/info', getMe);
+
 
 export default router;

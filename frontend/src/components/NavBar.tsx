@@ -1,7 +1,8 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { logoutUser } from '../services/userService'
-import { useNavigate } from 'react-router'
+//import { logoutUser } from '../services/userService'
+import { useAuthentification } from '../context/AuthContext';
+//import { useNavigate } from 'react-router'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -16,12 +17,12 @@ function classNames(...classes) {
 
 export default function NavBar() {
 
-  const navigate = useNavigate();
+
+const { logout } = useAuthentification();
 
 const handleLogout = async () => {
   try {
-    await logoutUser();
-    navigate('/login'); // Redirect to login page after logout
+    await logout();
   } catch (error) {
     console.error("Logout failed:", error);
   }

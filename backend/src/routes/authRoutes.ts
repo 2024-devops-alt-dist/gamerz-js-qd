@@ -1,12 +1,9 @@
 import { Router, Request, Response } from "express";
-import { IUser } from "../interfaces/userInterface";
 import { 
     login,
     logout,
 } from "../controllers/authController";
-import multer from "multer";
-import  path  from "path";
-import { verifyAccessToken, refreshAccessToken } from "../middlewares/authMiddlewares";
+import { refreshAccessToken } from "../middlewares/authMiddlewares";
 
 const router = Router();
 

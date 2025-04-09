@@ -104,23 +104,29 @@ export const deleteUser = async (
 
 // Fonction pour renvoyer les informations de l'utilisateur connecté
 export const getMe = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    console.log("Inside getMe function");
     try {
-
-        const token = req.cookies.token;
+        
+        const token = req.cookies.accessToken;
+        console.log("Cookies:", req.cookies); // Vérifie les cookies dans la requête
+        console.log("Token:", token); // Vérifie la présence du token dans les cookies
         if (!token) {
             res.status(403).json({ message: 'No token, access forbidden' });
             return;
+            
         }
+        
 
         const decoded = jwt.verify(token, SECRET_KEY) as jwt.JwtPayload;
-        
-        const user = await userModel.findById(decoded._id); // Utilise l'ID de l'utilisateur extrait du token
+        console.log('Decoded token:', decoded);
+
+        const user = await userModel.findById(decoded.id); // Utilise l'ID de l'utilisateur extrait du token
 
         if (!user) {
             res.status(404).json({ message: 'User not found' });
             return;
         }
-
+        console.log('User found:', user);
         // Renvoie les informations essentielles de l'utilisateur
         res.status(200).json({
             _id: user._id,
@@ -137,5 +143,6 @@ export const getMe = async (req: Request, res: Response, next: NextFunction): Pr
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
+        
     }
 };

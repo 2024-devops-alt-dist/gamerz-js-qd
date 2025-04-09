@@ -2,8 +2,10 @@ import express, { Application } from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
+import cookieParser from 'cookie-parser';
 
 const app: Application = express();
+app.use(cookieParser());
 
 const corsOptions = {
     origin:  'http://localhost:5173', 
@@ -24,5 +26,6 @@ app.use(express.json());
 
 app.use(`${path}/auth`, authRoutes);
 app.use(`${path}/users`, userRoutes);
+
 
 export default app;
