@@ -75,6 +75,7 @@ export default function RegisterForm() {
                                 <input
                                     id="name"
                                     {...register("name")}
+                                    autoComplete='name'
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
                                 />
                                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
@@ -137,7 +138,7 @@ export default function RegisterForm() {
                             </label>
                             <div className="mt-2">
                                 <input
-                                    id="photo"
+                                    id="avatar"
                                     type="file"
                                     {...register("avatar")}
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
