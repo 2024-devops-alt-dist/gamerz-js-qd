@@ -31,20 +31,6 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
             res.status(404).json({ message: "User not found" });
             return;
         }
-
-        // res.status(200).json({
-        //     _id: user._id,
-        //     username: user.name,
-        //     email: user.email,
-        //     role: user.role,
-        //     admissionText: user.admissionText,
-        //     avatar: user.avatar,
-        //     allowNotification: user.allowNotification,
-        //     seenAdmission: user.seenAdmission,
-        //     status: user.status,
-        //     createdAt: user.createdAt,
-        //     updatedAt: user.updatedAt,
-        // });
         next();
     } catch (error) {
         res.status(403).json({ message: 'Invalid or expired access token' });

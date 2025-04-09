@@ -11,6 +11,7 @@ import {
 import multer from "multer";
 import  path  from "path";
 import { verifyAccessToken, refreshAccessToken } from "../middlewares/authMiddlewares";
+import { requireRole } from '../middlewares/requireRoleMiddleware';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -27,11 +28,11 @@ const router = Router();
 
 // Définition des routes utilisateur
 
-router.get("/", verifyAccessToken, getUsers);
+router.get("/", verifyAccessToken, requireRole(['admin']), getUsers);
 router.post("/register", upload.single("avatar"), register);
 router.get("/:id", verifyAccessToken, getUserById);
-router.put("/:id", verifyAccessToken, updateUser);
-router.delete("/:id", verifyAccessToken, deleteUser);
+router.put("/:id", verifyAccessToken,requireRole(['admin']), updateUser);
+router.delete("/:id", verifyAccessToken,requireRole(['admin']), deleteUser);
 router.get('/me/info', getMe);
 
 

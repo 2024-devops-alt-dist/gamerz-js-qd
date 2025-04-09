@@ -25,7 +25,8 @@ const userSchema = new Schema<IUser>({
     },
     role: {
         type: [String],
-        default: []
+        enum: ['admin', 'user', 'gamer' ],
+        default: ['user']
     },
     avatar: {
        path: String,
