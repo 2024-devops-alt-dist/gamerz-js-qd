@@ -6,11 +6,7 @@ import userModel from '../models/userModel';
 // Middleware pour vérifier l'access token
 export const verifyAccessToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
-    console.log("Inside verifyAccessToken middleware");
-
     const accessToken = req.cookies.accessToken;
-    console.log("Cookies:", req.cookies); // Vérifie les cookies dans la requête
-    console.log("accessToken:", accessToken); // Vérifie la présence du token dans les cookies
 
     if (!accessToken) {
         console.log("Aucun token trouvé dans les cookies");
@@ -20,8 +16,6 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
 
     try {
         const decoded = jwt.verify(accessToken, SECRET_KEY) as jwt.JwtPayload;
-        console.log("Decoded token:", decoded);
-        console.log("Decoded token id:", decoded.id);
 
         // On extrait l'ID de l'utilisateur à partir du token décrypté
         const user = await userModel.findById(decoded.id);

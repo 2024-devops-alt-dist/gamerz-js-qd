@@ -104,21 +104,14 @@ export const deleteUser = async (
 
 // Fonction pour renvoyer les informations de l'utilisateur connecté
 export const getMe = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    console.log("Inside getMe function");
     try {
         
         const token = req.cookies.accessToken;
-        console.log("Cookies:", req.cookies); // Vérifie les cookies dans la requête
-        console.log("Token:", token); // Vérifie la présence du token dans les cookies
         if (!token) {
             res.status(403).json({ message: 'No token, access forbidden' });
             return;
-            
         }
-        
-
         const decoded = jwt.verify(token, SECRET_KEY) as jwt.JwtPayload;
-        console.log('Decoded token:', decoded);
 
         const user = await userModel.findById(decoded.id); // Utilise l'ID de l'utilisateur extrait du token
 
