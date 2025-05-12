@@ -21,7 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/channels" element={<ChannelsList />} />
-        <Route path="/channel/:id" element={<ChannelPage />} />
+        <Route path="/channels/:id" element={<ChannelPage />} />
       </Routes>
     </>
   )

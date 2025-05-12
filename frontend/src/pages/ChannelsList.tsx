@@ -31,9 +31,9 @@ function ChannelList() {
   return (
     <>
         <div>Liste des channels</div>
-      {channels && channels[0] && channels.map((oneChannel, index) => (
-        <ListChans channel={oneChannel} index={index}/>
-      ))}
+        {channels && channels.map((oneChannel, index) => (
+          <ListChans key={oneChannel._id || index} channel={oneChannel} index={index} />
+        ))}
         
     </>
   )
