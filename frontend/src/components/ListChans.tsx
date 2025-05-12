@@ -1,6 +1,10 @@
 import { IChannel } from "../interfaces/IChannel";
 
-export default function ListChans (channel :IChannel, index:number ) {
+interface Props {
+    channel: IChannel;
+    index: number;
+  }
+export default function ListChans ({ channel, index }: Props) {
 
     
     return (
