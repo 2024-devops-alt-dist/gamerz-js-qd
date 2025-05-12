@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
+import channelRoutes from "./routes/channelRoutes";
 import cookieParser from 'cookie-parser';
 
 const app: Application = express();
@@ -26,6 +27,7 @@ app.use(express.json());
 
 app.use(`${path}/auth`, authRoutes);
 app.use(`${path}/users`, userRoutes);
+app.use(`${path}/channels`, channelRoutes);
 
 
 export default app;
