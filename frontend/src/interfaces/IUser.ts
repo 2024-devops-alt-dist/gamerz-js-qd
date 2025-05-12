@@ -2,7 +2,9 @@ export interface IUser {
     _id: string;
     name: string;
     email: string;
-    role: string[];  // ["user", "admin"]
+    password: string;
+    admissionText?: string;
+    role: string[];
     avatar?: string;
     allowNotification?: boolean;
     seenAdmission?: boolean;

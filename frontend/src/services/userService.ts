@@ -1,10 +1,10 @@
 import {axiosClient} from '../auth/axios-config';
-import { User } from '../entities';
+import { IUser } from "../interfaces/IUser";
 
 //Pour enregistrer un nouvel utilisateur
-//@returns User
-export async function postUser(user: FormData) {
-    const response = await axiosClient.post<User>('/users/register', user);
+//@returns IUser
+export async function postUser(user: FormData): Promise<IUser> {
+    const response = await axiosClient.post<IUser>('/users/register', user);
     return response.data;
 }
 
@@ -18,3 +18,17 @@ export async function postUser(user: FormData) {
 // export async function logoutUser() {
 //     await axiosClient.post('/auth/logout');
 //   }
+
+// Pour récupérer tous les utilisateurs
+export async function fetchUsers(): Promise<IUser[]> {
+    const response = await axiosClient.get<IUser[]>("/users");
+    return response.data;
+  }
+  
+  // Pour actualiser le seenAdmission d'un utilisateur
+export async function updateUserSeenAdmission(id: string, seen: boolean): Promise<IUser> {
+    const response = await axiosClient.put<IUser>(`/users/${id}`, {
+        seenAdmission: seen,
+    });
+    return response.data;
+}
