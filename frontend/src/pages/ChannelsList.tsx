@@ -14,13 +14,15 @@ function ChannelList() {
     async function getAllChannels() {
       try {
         const data = await fetchChannels();
+        console.log(data);
         setChannels(data);
   
       }
       catch (error) {
         console.error("Error while fetching channels", error);
       }
-      console.log("channels fetched successfully");
+      console.log("channels fetched successfully", );
+      console.log(channels);
     };
        // Execute the created function directly
     getAllChannels();
@@ -29,9 +31,9 @@ function ChannelList() {
   return (
     <>
         <div>Liste des channels</div>
-      {channels && channels[0] && channels.map((oneChannel, index) => {
+      {channels && channels[0] && channels.map((oneChannel, index) => (
         <ListChans channel={oneChannel} index={index}/>
-      })}
+      ))}
         
     </>
   )
