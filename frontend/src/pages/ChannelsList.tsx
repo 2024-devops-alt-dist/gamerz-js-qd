@@ -1,8 +1,38 @@
+import { useState, useEffect } from "react";
+import ListChans from "../components/ListChans";
+import {fetchChannels} from "../services/channelServices";
+import { IChannel } from "../interfaces/IChannel";
+
 function ChannelList() {
+
+  
+ const [channels, setChannels] = useState<IChannel[]>();
+   
+
+  useEffect(() => {
+    // Create an scoped async function in the hook
+    async function getAllChannels() {
+      try {
+        const data = await fetchChannels();
+        setChannels(data);
+  
+      }
+      catch (error) {
+        console.error("Error while fetching channels", error);
+      }
+      console.log("channels fetched successfully");
+    };
+       // Execute the created function directly
+    getAllChannels();
+  }, []);
 
   return (
     <>
-        <div>Insérer ici la liste des channels</div>
+        <div>Liste des channels</div>
+      {channels && channels[0] && channels.map((oneChannel, index) => {
+        <ListChans channel={oneChannel} index={index}/>
+      })}
+        
     </>
   )
 }
