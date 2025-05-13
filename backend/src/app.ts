@@ -10,7 +10,7 @@ const app: Application = express();
 app.use(cookieParser());
 
 const corsOptions = {
-    origin:  'https://gamerz-js-qd-front.onrender.com', 
+    origin:  process.env.BASE_URL, 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'], // En-têtes autorisés
     credentials: true, // Autoriser les cookies
