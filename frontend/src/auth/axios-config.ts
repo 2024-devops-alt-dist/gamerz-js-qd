@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosClient = axios.create({
-    baseURL: 'http://localhost:3000/api/v1',
+    baseURL: 'https://gamerz-js-qd.onrender.com',
     withCredentials: true, 
   });
