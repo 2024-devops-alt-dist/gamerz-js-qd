@@ -35,14 +35,14 @@ export const login = async (req: Request<{}, {}, IUser>, res: Response) => {
         res.cookie('accessToken', accessToken, {
             httpOnly:true,
             secure: true, // true : Https uniquement en prod
-            sameSite: 'lax', // niveau de sécurité pour les cookies
+            sameSite: 'none', // niveau de sécurité pour les cookies
             maxAge: 1000 * 60 * 60 * 24, // 1 jour (durée de vie du cookie dans le navigateur)
         });
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'lax',
+            sameSite: 'none',
             maxAge: 1000 * 60 * 60 * 24 * 30, 
         });
 

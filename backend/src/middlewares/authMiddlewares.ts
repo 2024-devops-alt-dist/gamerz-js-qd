@@ -61,7 +61,7 @@ export const refreshAccessToken = async (req: Request, res: Response): Promise<v
         res.cookie('accessToken', newAccessToken, {
             httpOnly: true,
             secure: true,
-            sameSite: 'lax',
+            sameSite: 'none',
             maxAge: 1000 * 60 * 60 * 24, // 1 jour
         });
 
