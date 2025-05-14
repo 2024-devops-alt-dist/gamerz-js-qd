@@ -49,10 +49,10 @@ function ChannelList() {
           </svg>
           <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
             <h2 className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
-            Liste des channels
+            Channels
             </h2>
             <p className="mt-6 text-lg/8 text-pretty text-gray-300">
-              Rejoignez les mondes du gaming
+              Join the best gaming community now ! Meet fellow gamers playing your favorite games ! Log in to see the channels.
             </p>
               <div className ="mt-3">
               {channels && channels.map((oneChannel, index) => (

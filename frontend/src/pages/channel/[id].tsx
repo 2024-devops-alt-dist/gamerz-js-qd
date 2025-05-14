@@ -52,12 +52,14 @@ function ChannelPage() {
     setInput("");
   };
 
-  if (!channel) return <div>Chargement...</div>;
+  if (!channel) return <div>Loading...</div>;
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold mb-2">{channel.title}</h1>
-      <p className="mb-2">{channel.description}</p>
+    <div className="p-4 bg-gray-800 min-h-100">
+      <div className="p-4 w-100">
+        <h1 className="text-xl  mb-2 text-white">{channel.title}</h1>
+        <p className="mb-2 text-white">{channel.description}</p>
+      </div>
       {channel.image?.path && <img className="mb-4" src={channel.image.path} alt={channel.title} />}
 
       <div className="flex flex-col gap-2 max-h-[60vh] overflow-y-auto mb-4">
@@ -68,7 +70,7 @@ function ChannelPage() {
 
       <div className="flex">
         <input
-          className="flex-1 border border-gray-300 px-4 py-2 rounded-l-md"
+          className="flex-1 border border-gray-300 px-4 py-2 rounded-l-md text-white "
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -76,10 +78,10 @@ function ChannelPage() {
           placeholder="Écris ton message ici..."
         />
         <button
-          className="bg-blue-600 text-white px-4 py-2 rounded-r-md"
+          className="bg-red-400 text-white px-4 py-2 rounded-r-md"
           onClick={sendMessage}
         >
-          Envoyer
+          Send
         </button>
       </div>
     </div>

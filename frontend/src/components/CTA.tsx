@@ -18,10 +18,10 @@ export default function CTA() {
             </svg>
             <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
               <h2 className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
-                Boost your productivity. Start using our app today.
+                Chat with fellow gamers. Start using our app today.
               </h2>
               <p className="mt-6 text-lg/8 text-pretty text-gray-300">
-                Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
+                Your friends and game partners always within reach on your phone or computer ! Fast, efficient and fun !
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                 <a
@@ -38,7 +38,7 @@ export default function CTA() {
             <div className="relative mt-16 h-80 lg:mt-8">
               <img
                 alt="App screenshot"
-                src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+                src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 width={1824}
                 height={1080}
                 className="absolute top-0 left-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"

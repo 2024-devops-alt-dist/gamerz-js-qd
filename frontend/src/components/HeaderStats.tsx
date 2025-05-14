@@ -1,14 +1,14 @@
 const links = [
-    { name: 'Open roles', href: '#' },
-    { name: 'Internship program', href: '#' },
-    { name: 'Our values', href: '#' },
-    { name: 'Meet our leadership', href: '#' },
+    { name: 'Discover the channels', href: '#' },
+    { name: 'Chat with admins', href: '#' },
+    { name: 'Send your application', href: '#' },
+    { name: 'FAQ', href: '#' },
   ]
   const stats = [
-    { name: 'Offices worldwide', value: '12' },
-    { name: 'Full-time colleagues', value: '300+' },
-    { name: 'Hours per week', value: '40' },
-    { name: 'Paid time off', value: 'Unlimited' },
+    { name: 'Update per month', value: '12' },
+    { name: 'Community size', value: '300+' },
+    { name: 'Our tech team', value: '40' },
+    { name: 'Fun', value: 'Unlimited' },
   ]
   
   export default function HeaderStats() {
@@ -45,10 +45,9 @@ const links = [
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Work with us</h2>
+            <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Connect with others</h2>
             <p className="mt-8 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat.
+              Meet new people thanks to our games specific channels, bound together by your favorite games. Find partners for playing together. Enjoy discussing the narrative, the art or ask help if you're stuck. 
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

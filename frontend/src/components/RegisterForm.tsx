@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { postUser } from '../services/userService';
 import { useNavigate } from 'react-router';
+import VideoGame from '../assets/video-games.png'
 
 // Définition du schéma de validation avec Zod
 const formSchemaSignUp = z.object({
@@ -55,8 +56,8 @@ export default function RegisterForm() {
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
-                        alt="Your Company"
-                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                        alt="Gamerz"
+                        src={VideoGame}
                         className="mx-auto h-10 w-auto"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
@@ -76,7 +77,7 @@ export default function RegisterForm() {
                                     id="name"
                                     {...register("name")}
                                     autoComplete='name'
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-red-400"
                                 />
                                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
                             </div>
@@ -93,7 +94,7 @@ export default function RegisterForm() {
                                     type="email"
                                     {...register("email")}
                                     autoComplete="email"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-red-400"
                                 />
                                 {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
                             </div>
@@ -109,7 +110,7 @@ export default function RegisterForm() {
                                     id="password"
                                     type="password"
                                     {...register("password")}
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-red-400"
                                 />
                                 {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}
                             </div>
@@ -125,7 +126,7 @@ export default function RegisterForm() {
                                     id="confirmPassword"
                                     type="password"
                                     {...register("confirmPassword")}
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-red-400"
                                 />
                                 {errors.confirmPassword && <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>}
                             </div>
@@ -141,7 +142,7 @@ export default function RegisterForm() {
                                     id="avatar"
                                     type="file"
                                     {...register("avatar")}
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-red-400"
                                 />
                                 {errors.avatar && <p className="mt-1 text-sm text-red-600">{errors.avatar.message}</p>}
                             </div>
@@ -157,7 +158,7 @@ export default function RegisterForm() {
                                     id="admissionText"
                                     {...register("admissionText")}
                                     placeholder="Minimum 100 characters"
-                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-red-400"
                                 />
                                 {errors.admissionText && <p className="mt-1 text-sm text-red-600">{errors.admissionText.message}</p>}
                             </div>
@@ -166,7 +167,7 @@ export default function RegisterForm() {
                         {/* Bouton Submit */}
                         <button
                             type="submit"
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-white font-semibold shadow-xs hover:bg-indigo-500 focus:outline-2 focus:outline-indigo-600"
+                            className="flex w-full justify-center rounded-md bg-red-400 px-3 py-1.5 text-white font-semibold shadow-xs hover:bg-indigo-500 focus:outline-2 focus:outline-red-400"
                         >
                             Sign up
                         </button>

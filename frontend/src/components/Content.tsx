@@ -33,13 +33,12 @@ export default function Content() {
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-              <p className="text-base/7 font-semibold text-indigo-600">Deploy faster</p>
+              <p className="text-base/7 font-semibold text-red-400">Easy chat</p>
               <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-                A better workflow
+                The best for gamers
               </h1>
               <p className="mt-6 text-xl/8 text-gray-700">
-                Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                eget aliquam. Quisque id at vitae feugiat egestas.
+                Gamerz is the best social network for connecting gamers from all around the world. By the way, if you're reading this, know that all this text was written without AI, and I'm proud of it.
               </p>
             </div>
           </div>
@@ -47,7 +46,7 @@ export default function Content() {
         <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img
             alt=""
-            src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+            src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             className="w-[48rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem]"
           />
         </div>
@@ -62,24 +61,24 @@ export default function Content() {
               </p>
               <ul role="list" className="mt-8 space-y-8 text-gray-600">
                 <li className="flex gap-x-3">
-                  <CloudArrowUpIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
+                  <CloudArrowUpIcon aria-hidden="true" className="mt-1 size-5 flex-none text-red-400" />
                   <span>
-                    <strong className="font-semibold text-gray-900">Push to deploy.</strong> Lorem ipsum, dolor sit amet
+                    <strong className="font-semibold text-gray-900">Cloud saves</strong> Lorem ipsum, dolor sit amet
                     consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
                     blanditiis ratione.
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <LockClosedIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
+                  <LockClosedIcon aria-hidden="true" className="mt-1 size-5 flex-none text-red-400" />
                   <span>
-                    <strong className="font-semibold text-gray-900">SSL certificates.</strong> Anim aute id magna aliqua
+                    <strong className="font-semibold text-gray-900">Accounts</strong> Anim aute id magna aliqua
                     ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
                   </span>
                 </li>
                 <li className="flex gap-x-3">
-                  <ServerIcon aria-hidden="true" className="mt-1 size-5 flex-none text-indigo-600" />
+                  <ServerIcon aria-hidden="true" className="mt-1 size-5 flex-none text-red-400" />
                   <span>
-                    <strong className="font-semibold text-gray-900">Database backups.</strong> Ac tincidunt sapien
+                    <strong className="font-semibold text-gray-900">Games servers</strong> Ac tincidunt sapien
                     vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
                   </span>
                 </li>
@@ -89,7 +88,7 @@ export default function Content() {
                 fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac
                 adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
               </p>
-              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">No server? No problem.</h2>
+              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">Reliable instant communication</h2>
               <p className="mt-6">
                 Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat in. Convallis arcu ipsum urna nibh.
                 Pharetra, euismod vitae interdum mauris enim, consequat vulputate nibh. Maecenas pellentesque id sed
